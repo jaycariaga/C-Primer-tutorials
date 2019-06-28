@@ -12,7 +12,7 @@ void birthday(person * p);
 
 /* write your function here */
 void birthday(person * p){
-	p -> age ++;
+	p -> age ++; //pointer to p.age and saves an increment towards that variable
 
 }
 
