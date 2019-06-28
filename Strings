@@ -1,0 +1,21 @@
+//covers String expressions
+#include <stdio.h>
+#include <string.h>
+int main() {
+  /* define first_name */
+    char * first_name = "John";
+  /* define last_name */
+    char last_name[] = "Doe";
+  char name[100];
+
+  last_name[0] = 'B'; //changes "D" in doe to "Boe"
+  sprintf(name, "%s %s", first_name, last_name);
+  if (strncmp(name, "John Boe", 100) == 0) {
+      printf("Done!\n");
+  }
+  name[0]='\0'; //assume gives a null value to that element
+  strncat(name,first_name,4); //concatenates with first name
+  strncat(name,last_name,20); //w/o spacing concatenates last name
+  printf("%s\n",name);
+  return 0;
+}
