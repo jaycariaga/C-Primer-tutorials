@@ -1,3 +1,5 @@
+# Cloning
+$ git clone https://github.com/jaycariaga/C-Primer-tutorials.git
 # C-Primer-tutorials
 The instructions of the exercise are commented on top of the code itself.
 # Install Compiler
