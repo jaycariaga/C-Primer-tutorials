@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <string.h> //needed for string comparisons
 #define getName(var)  #var
-
+#include <stdlib.h> //for file storage
 
 //current problem running: on searching via struct variable "roll", returning elements past first index returns something out of bounds.
 //refer to function "elementchangestudent()"
@@ -18,13 +18,30 @@ struct student
 void printStudentPointer(struct student *a, int);
 void printStudentdot(struct student a[], int);
 void elementchangestudent(int size, struct student * a); //* needed to call onto the value of the structure itself
-struct student returninfo();
+void returninfo(int size, struct student * a);
 
 //should place the documented structure arrays into a txt file
-struct student returninfo(){
-	
+void returninfo(int size, struct student * a){
+   char storage[90000];
+   FILE *file;
+   file = fopen("result.txt", "w");
+   if(file == NULL)
+   {
+      printf("Error!");
+      exit(1);
+   }
+   
+   int i = 0;
+   for(; i < size; ++i){
+     strcpy(storage, "");
+     sprintf(storage, "Student_id : %d\nFirst Name : %s\nLast Name: %s\n\n", a[i].roll, a[i].firstname, a[i].lastname);
+
+     fprintf(file,"%s", storage);
+     fclose(file);
+   }
 
 }
+
 
 void printStudentPointer(struct student *s, int size) 
 { 
@@ -127,7 +144,7 @@ void main(){
 	elementchangestudent(truesize, s); //&s as a dereferencing for the pointer in the function call.
 	printStudentdot(s, truesize); //checks to see the final result
 
-	
+	returninfo(truesize, s);
 
 }
 
