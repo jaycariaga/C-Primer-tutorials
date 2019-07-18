@@ -5,7 +5,7 @@
 #define getName(var)  #var
 
 
-//current problem running: utilizing pointers and references to change a variable of a structure...
+//current problem running: on searching via struct variable "roll", returning elements past first index returns something out of bounds.
 //refer to function "elementchangestudent()"
 
 struct student
@@ -18,7 +18,7 @@ struct student
 //list of functions for structure student
 void printStudentPointer(struct student *a, int);
 void printStudentdot(struct student a[], int);
-void elementchangestudent(int size, struct student (* a)[size]); //* needed to call onto the value of the structure itself
+void elementchangestudent(int size, struct student * a); //* needed to call onto the value of the structure itself
 struct student returninfo();
 
 struct student returninfo(){
@@ -52,46 +52,39 @@ void printStudentdot(struct student s[], int size){
 //asks user what value to change from which id, and changes it if matches
 //where student s is a structural array and size is the element size of s
 //call the function in main with: "elementchangestudent(&s, size);
-void elementchangestudent(int size, struct student (* s)[size]){ //* pointer needed for updating schematics
-
+void elementchangestudent(int size, struct student * s){ //* pointer needed for updating schematics
+  int i = 0;
   bool truth = false;
   int answer; //used for id checking through an array of structures
-  //char newfirst[50];
 
+//asks for ID (the "roll" variable of struct student)
   printf("\nID of student: ");
   scanf("%d", &answer);
-//search for match of item:
 
-  for(int i=0; i < size ; ++i){
-	int rollcall = (*s)->roll;   //(*s)->roll;
+//searches for match of item:
+  for(; i < size ; ++i){
+	int rollcall = s[i].roll;   //(*s)->roll;
         if(answer == rollcall){
 	   printf("%d matches with: ", answer);
-	   printf("%d \n", (*s)->roll);
-	   truth = true; //validation for changing
-printf("Student_id : %d\n"
+	   printf("%d \n", s[i].roll);
+	   truth = true; //validation to allow user to change 'firstname' of item with matching id
+	  printf("Student_id : %d\n"
          "First Name  : %s\n"
          "Last Name: %s\n",
-          (*s)->roll, (*s)->firstname, (*s)->lastname);
+          s[i].roll, s[i].firstname, s[i].lastname); //shows matching id details
 	   break;
 	}
 	else{
-	   printf("nope\n");
-	   printf("%d does not match with: ",answer);
+	   printf("\n%d does not match with: ",answer);
 	   printf("%d\n", rollcall);
-	}
-
-printf("Student_id : %d\n"
-         "First Name  : %s\n"
-         "Last Name: %s\n",
-          (*s)->roll, (*s)->firstname, (*s)->lastname);
+ 	}
 	  
- 	  s++; //doing this changes the reference to the next roll value
   } //end of for loop
 
 	if(truth){ //success in finding the id using input
 	 //code to change firstname
 	  printf("\nEnter the new firstname: ");
-	  scanf("%s", (*s)->firstname);
+	  scanf("%s", s[i].firstname);
 	  //(*s)->firstname = newfirst;
 	  printf("Success");
 	}
@@ -104,7 +97,7 @@ void main(){
   //bool continue = true; //for while loop compare
   int counter = 0; //for indexing thru array struct
   char check; //meant for boolean
-  int size = 2; //a fixed set for array size
+  int size = 3; //a fixed set for array size
 
   struct student s[size]; //variable structure array 's' created
       
@@ -131,7 +124,7 @@ void main(){
 
 	printStudentdot(s, truesize); //works too
 
-	elementchangestudent(truesize, &s); //&s as a dereferencing for the pointer in the function call.
+	elementchangestudent(truesize, s); //&s as a dereferencing for the pointer in the function call.
 	printStudentdot(s, truesize); //checks to see the final result
 
 
