@@ -5,9 +5,6 @@
 #define getName(var)  #var
 
 
-//current problem running: on searching via struct variable "roll", returning elements past first index returns something out of bounds.
-//refer to function "elementchangestudent()"
-
 struct student
 {
     char firstname[50];
