@@ -9,7 +9,7 @@ In the linux terminal:
 <br>above allows gcc compiler to build
 
 # Compiling and Running .c Files
-<br><b>To start compiling a C# file:
-<br>$ gcc program-source-code.c -o executable-file-name </b>
+<br>To start compiling a C# file:
+<br><b>$ gcc program-source-code.c -o executable-file-name </b>
 <br><br>After creating the executable file, run it by moving to the executable's directory and:
 <br><b>$ ./executable-file-name </b>
