@@ -1,7 +1,6 @@
-# Cloning
-$ git clone https://github.com/jaycariaga/C-Primer-tutorials.git
 # C-Primer-tutorials
 The instructions of the exercise are commented on top of the code itself.
+Meant to brush up on C skills and explore pointers and references with the language.
 # Install Compiler
 In the linux terminal:
 <br>$ sudo apt-get update
